@@ -1,63 +1,158 @@
-# Шаблон репозитория, для успешной сдачи лабораторных работ.
+# Лабораторная работа №3  **Тема:** Алгоритмический мини-пакет 
 
-## Введение
-Данный шаблон является примером оформления кода для сдачи лабораторных работ.
-Рекомендуется  строго его придерживаться во избежания проблем при сдаче и понижения баллов
+## Автор
 
+### Галанова Екатерина Алексеевна группа М8О-102БВ-25
 
 ## Структура проекта
 
- <pre>
-    .
-    ├── lab<# лабораторной работы>             # Кодовая база вашей лабораторной работы
-    │   ├── src/                               # Исходный код
-    │   ├── tests/                             # Unit тесты
-    │   ├── uv.lock                            # зависимости вашего проекта
-    │   ├── report.pdf                         # Отчет
-    │   ├── .gitignore                         # git ignore файл
-    │   ├──.pre-commit-config.yaml             # Средства автоматизации проверки кодстайла
-    │   ├── README.md                          # Описание вашего проекта, с описанием файлов и с титульником о том,
-                                               # что и какая задача
-</pre>
-
-В папке [src](./src) лежат файлы с реализацией задачи заданной в лабораторной работе. Обязательным файлом является файл
-[main.py](./src/main.py) в котором описана точка входа в приложение - функция **main**. Требования к коду:
-- Переменные, функции и модули именуются по [**snake_case**](https://realpython.com/ref/glossary/snake-case/)
-- Константы должны быть вынесены в файл **constants.py** и именовановаться с помощию символов в верхнем регистре
-- Классы должны именоваться в [**PascalCase**](https://habr.com/ru/articles/724556/)
-- Имена сущностей должны быть осмысленные и содержательные
-- Все отступы должны быть консистентны: 1 TAB = 4 spaces
-- Весь функционал должен быть описан в функциях и в классах. Не допускается писать весь в глобальном скоупе или в одной функции
-- К каждой функции должны быть описаны  [**docstring**](https://peps.python.org/pep-0257/) и аннотации к аргументам и выходным параметрам функций.
-
-В качестве референса проще cходу соблюдать [**PEP8**](https://peps.python.org/pep-0008/) и использовать IDE c готовой поддержкой:
-например PyCharm или VSCode c настроенными плагинами.
-В ходе попыток запушить код в репозиторий ваш код будет проходить проверку статическим анализатором [**mypy**](https://mypy-lang.org/)
-а также с встроенным в [**ruff**](https://astral.sh/ruff) на предмет нарушения код стайла. При работе с кодовой базой
-всю работу необходимо выполнять в [виртуальном окружении](https://docs.python.org/3/tutorial/venv.html)
-
-
-В папке [tests](./tests) лежат [unit тесты](https://tproger.ru/articles/testiruem-na-python-unittest-i-pytest-instrukcija-dlja-nachinajushhih) для проверки функциональности программы или ее частей.
-Рекомендуется использовать pytest. Также название тестов должно быть осмысленно и содержать определение проверямой части.
-Базовые соглашения pytest можно посмотреть [здесь](https://www.qabash.com/pytest-default-naming-conventions-guide/).
-Рекомендуется проверять не только успешные кейсы, но и краевые условия и кейсы в которых была допущена ошибка (неудачные кейсы).
-
-В качестве пакетного менджера в данном шаблоне/репозитории используется [uv](https://github.com/astral-sh/uv).
-Можно использовать и [стандартные виртальные окружения](https://docs.python.org/3/library/venv.html). В таком случае необходимо добавить в репозиторий `requirements.txt`.
-Это достигается командой
-```shell
-pip freeze > requirements.txt
 ```
-Также разрешается использовать [`poetry`](https://python-poetry.org/)
-## Как работать с репозиторием и шаблонами
-1. Необходимо создать репозиторий из этого шаблона. Посмотреть можно [здесь](https://docs.github.com/ru/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
-2. Склонировать или спуллить его к себе на машину командами `git pull` или `git clone`
-3. Создать виртуальное окружение:
+Lab-3/
+├── src/
+│   ├── main.py              # Точка входа (CLI)
+│   ├── factorial_fibo.py    # Факториал и числа Фибоначчи
+│   ├── sorts.py             # Базовые сортировки
+│   ├── sorting_utils.py     # Сортировки с поддержкой key и cmp
+│   ├── stack.py             # Стек с получением минимума за O(1)
+│   ├── queue.py             # Очередь FIFO
+│   ├── generation.py        # Генерация тест-кейсов
+│   └── benchmark.py         # Бенчмарк сортировок
+├── tests/
+│   └── test_lab3.py         # Unit-тесты
+├── requirements.txt
+├── pyproject.toml
+└── README.md
+```
 
-    a. Для uv прописать команду `uv venv`. Затем прописать `.venv/bin/activate` в терминале
+## Реализованный функционал
 
-    b. Для обычного python `python -m venv <имя директории где будет храниться папка .venv>`. Затем прописать `.venv/bin/activate` в терминале
-4. Установить [`pre-commit`](https://pre-commit.com/). Для этого достаточно ввести команду `pip install pre-commit`
-5. Выполнить команду `pre-commit install`
-6. При запушивании в репозиторий необходимо правильно составлять сообщения коммита. Правила можно прочитать [здесь](https://github.com/RomuloOliveira/commit-messages-guide/blob/master/README_ru-RU.md)
-7. **Внимательно** читайте то, что пишется при попытке коммита, если исправили ошибки нужно заново добавить отредактированные файлы в гит и попробовать коммитнуть
+### 1. Факториал и Фибоначчи
+
+```python
+def factorial(n: int) -> int           # итеративный факториал
+def factorial_recursive(n: int) -> int # рекурсивный факториал
+def fibo(n: int) -> int                # итеративное число Фибоначчи
+def fibo_recursive(n: int) -> int      # рекурсивное число Фибоначчи
+```
+
+### 2. Сортировки
+
+**Базовые (sorts.py):**
+```python
+def bubble_sort(a: list[int]) -> list[int]                    # пузырьком
+def quick_sort(a: list[int]) -> list[int]                     # быстрая
+def counting_sort(a: list[int]) -> list[int]                  # подсчётом
+def radix_sort(a: list[int], base: int = 10) -> list[int]     # поразрядная
+def bucket_sort(a: list[float], buckets: int | None) -> list[float]  # блочная
+def heap_sort(a: list[int]) -> list[int]                      # пирамидальная
+def shell_sort(a: list[int]) -> list[int]                     # Шелла
+```
+
+**С поддержкой key и cmp (sorting_utils.py):**
+```python
+def bubble_sort(a: list[T], key=None, cmp=None) -> list[T]
+def quick_sort(a: list[T], key=None, cmp=None) -> list[T]
+def heap_sort(a: list[T], key=None, cmp=None) -> list[T]
+def shell_sort(a: list[T], key=None, cmp=None) -> list[T]
+def counting_sort(a: list[T], key=None) -> list[T]
+def radix_sort(a: list[T], base=10, key=None) -> list[T]
+def bucket_sort(a: list[T], buckets=None, key=None) -> list[T]
+```
+
+### 3. Структуры данных
+
+**Стек (на списке с O(1) минимумом):**
+```python
+class Stack:
+    def push(self, x: int) -> None      # добавить элемент
+    def pop(self) -> int                # извлечь элемент (IndexError если пуст)
+    def peek(self) -> int               # посмотреть вершину (IndexError если пуст)
+    def top(self) -> int                # алиас для peek()
+    def min(self) -> int                # минимум за O(1) (ValueError если пуст)
+    def is_empty(self) -> bool          # проверка на пустоту
+    def __len__(self) -> int            # количество элементов
+```
+
+**Очередь (FIFO на списке):**
+```python
+class Queue:
+    def enqueue(self, x: int) -> None   # добавить в конец
+    def dequeue(self) -> int            # извлечь из начала (IndexError если пуста)
+    def front(self) -> int              # посмотреть первый (IndexError если пуста)
+    def is_empty(self) -> bool          # проверка на пустоту
+    def __len__(self) -> int            # количество элементов
+```
+
+### 4. Генерация тест-кейсов
+
+```python
+def rand_int_array(n, lo, hi, distinct=False, seed=None) -> list[int]
+def rand_float_array(n, lo=0.0, hi=10.0, seed=None) -> list[float]
+def reverse_sorted(n) -> list[int]         # [n, n-1, ..., 1]
+def nearly_sorted(n, swaps, seed=None) -> list[int]
+def many_duplicates(n, k_unique=5, seed=None) -> list[int]
+```
+
+### 5. Бенчмарк
+
+```python
+def timeit_once(func, *args, **kwargs) -> float
+def benchmark_sorts(arrays, algos) -> dict[str, dict[str, float]]
+def print_benchmark_table(results)
+```
+
+## Использование CLI
+
+Запуск:
+```bash
+cd src
+python main.py
+```
+
+**Команды:**
+
+```
+fact 5                    → 120 (факториал)
+fact_r 5                  → 120 (рекурсивный)
+fibo 6                    → 8 (Фибоначчи)
+fibo_r 6                  → 8 (рекурсивный)
+
+bubble 5 2 8 1 9          → [1, 2, 5, 8, 9]
+quick 5 2 8 1 9           → [1, 2, 5, 8, 9]
+counting 5 2 8 1 9        → [1, 2, 5, 8, 9]
+radix 5 2 8 1 9           → [1, 2, 5, 8, 9]
+heap 5 2 8 1 9            → [1, 2, 5, 8, 9]
+shell 5 2 8 1 9           → [1, 2, 5, 8, 9]
+bucket 0.5 0.2 0.8        → [0.2, 0.5, 0.8]
+
+bubble_key len apple pie a      → ['a', 'pie', 'apple']
+quick_key neg 5 2 8 1           → [8, 5, 2, 1]
+bubble_cmp 5 2 8 1              → [8, 5, 2, 1]
+
+stack push 5              → pushed 5
+stack pop                 → 5
+stack min                 → минимум
+stack show                → содержимое стека
+
+queue enq hello           → enqueued hello
+queue deq                 → hello
+queue show                → содержимое очереди
+
+exit                      → выход
+```
+
+## Запуск тестов
+
+```bash
+pytest tests/test_lab3.py -v
+```
+
+## Ограничения
+
+- Запрещено использовать `list.sort()` и `sorted()` в реализации сортировок
+- Разрешена стандартная библиотека
+- Для Medium разрешён `functools.cmp_to_key`
+- Bucket sort по умолчанию работает с float (с нормализацией)
+- Структуры данных выбрасывают исключения при некорректных операциях
+
+
