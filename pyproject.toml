@@ -1,8 +1,25 @@
 [project]
-name = "labs"
-version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.12"
+name = "lab3"
+version = "1.0.0"
+description = "Лабораторная работа №3: Алгоритмический мини-пакет (структуры данных и сортировки)"
+requires-python = ">=3.10"
 dependencies = [
-    "pytest>=8.4.2",
+    "pytest>=8.0.0",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
